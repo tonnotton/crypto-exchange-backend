@@ -3,32 +3,33 @@ ER Diagram
 
 
 ![image](https://github.com/user-attachments/assets/79855433-e66a-4f6b-b80c-3f10e3efd358)
+I notice there are some formatting issues with the code blocks and sections in the README. Let me help reorganize it with proper markdown formatting:
 
 ```markdown
 # Crypto Exchange Backend
 
-ระบบแลกเปลี่ยน Cryptocurrency ที่สามารถนำเงิน Fiat (THB, USD) มาซื้อเหรียญจาก User คนอื่นๆในระบบ
+ระบบแลกเปลี่ยน Cryptocurrency ที่สามารถนำเงิน Fiat (THB, USD) มาซื้อเหรียญจาก User คนอื่นๆได้
 
-สิ่งที่ต้องมีในเครื่อง:
+## สิ่งที่ต้องมีในเครื่อง
 - Node.js เวอร์ชัน 20.11.0
 - PostgreSQL เวอร์ชัน 15
 - pgAdmin 4 (ไม่จำเป็นแต่แนะนำให้ติดตั้ง)
 
-ขั้นตอนการติดตั้ง:
+## ขั้นตอนการติดตั้ง
 
-ดาวน์โหลดโค้ดจาก GitHub โดยใช้คำสั่ง
-```
+1. ดาวน์โหลดโค้ดจาก GitHub โดยใช้คำสั่ง
+```bash
 git clone https://github.com/worapholak/crypto-exchange-backend.git
 cd crypto-exchange-backend
 ```
 
-ติดตั้ง dependencies
-```
+2. ติดตั้ง dependencies
+```bash
 npm install
 ```
 
-แก้ไขไฟล์ .env และใส่ข้อมูลดังนี้
-```
+3. แก้ไขไฟล์ .env และใส่ข้อมูลดังนี้
+```env
 DB_USERNAME=postgres           # Username PostgreSQL
 DB_PASSWORD=your_password      # Password PostgreSQL
 DB_DATABASE=crypto_exchange    # ชื่อฐานข้อมูล
@@ -36,25 +37,25 @@ DB_HOST=localhost
 DB_PORT=5432
 ```
 
-สร้างฐานข้อมูลและตาราง
-```
+4. สร้างฐานข้อมูลและตาราง
+```bash
 npx sequelize-cli db:create
 npx sequelize-cli db:migrate
 ```
 
-เพิ่มข้อมูลทดสอบ
-```
+5. เพิ่มข้อมูลทดสอบ
+```bash
 npx sequelize-cli db:seed:all
 ```
 
-รันโปรแกรม
-```
+6. รันโปรแกรม
+```bash
 npm run dev
 ```
 
-ข้อมูลทดสอบในระบบ:
+## ข้อมูลทดสอบในระบบ
 
-สกุลเงิน:
+### สกุลเงิน
 - Bitcoin (BTC)
 - Ethereum (ETH)
 - Ripple (XRP)
@@ -62,7 +63,7 @@ npm run dev
 - Thai Baht (THB)
 - US Dollar (USD)
 
-ผู้ใช้ทดสอบ:
+### ผู้ใช้ทดสอบ
 - ชื่อผู้ใช้: testuser1
   - อีเมล: test1@example.com
   - รหัสผ่าน: password123
@@ -72,25 +73,25 @@ npm run dev
   - รหัสผ่าน: password123
   - สถานะ KYC: ยังไม่ยืนยัน
 
-API ที่ใช้งานได้:
+## API ที่ใช้งานได้
 
-ส่วนผู้ใช้
+### ส่วนผู้ใช้
 - สร้างผู้ใช้ใหม่: `POST /api/users`
 - ดูข้อมูลผู้ใช้: `GET /api/users/:userId`
 
-ส่วนกระเป๋าเงิน
+### ส่วนกระเป๋าเงิน
 - สร้างกระเป๋าเงิน: `POST /api/wallets`
 - โอนเงิน: `POST /api/wallets/transfer`
 - ดูยอดเงิน: `GET /api/wallets/:walletId/balance`
 
-ส่วนคำสั่งซื้อขาย
+### ส่วนคำสั่งซื้อขาย
 - สร้างคำสั่ง: `POST /api/orders`
 - ดูคำสั่งที่รอดำเนินการ: `GET /api/orders/pending`
 - จับคู่คำสั่ง: `POST /api/orders/match`
 
-ตัวอย่างการส่ง JSON สำหรับแต่ละ API:
+## ตัวอย่างการส่ง JSON สำหรับแต่ละ API
 
-Users API:
+### Users API
 ```json
 // POST /api/users - สร้างผู้ใช้ใหม่
 {
@@ -98,11 +99,10 @@ Users API:
   "email": "test@example.com",
   "password": "password123"
 }
-
 // GET /api/users/:userId - ไม่ต้องส่ง body
 ```
 
-Wallets API:
+### Wallets API
 ```json
 // POST /api/wallets - สร้างกระเป๋าเงิน
 {
@@ -120,7 +120,7 @@ Wallets API:
 // GET /api/wallets/:walletId/balance - ไม่ต้องส่ง body
 ```
 
-Orders API:
+### Orders API
 ```json
 // POST /api/orders - สร้างคำสั่งซื้อ-ขาย
 {
@@ -141,19 +141,27 @@ Orders API:
 }
 ```
 
-การลบข้อมูลทดสอบ:
-```
-ลบข้อมูล seed: npx sequelize-cli db:seed:undo:all
-ลบตารางทั้งหมด: npx sequelize-cli db:migrate:undo:all
+## การลบข้อมูลทดสอบ
+```bash
+# ลบข้อมูล seed
+npx sequelize-cli db:seed:undo:all
+
+# ลบตารางทั้งหมด
+npx sequelize-cli db:migrate:undo:all
 ```
 
-การเพิ่มข้อมูลทดสอบใหม่:
-```
-เพิ่มทั้งหมด: npx sequelize-cli db:seed:all
-เพิ่มเฉพาะสกุลเงิน: npx sequelize-cli db:seed --seed 20250128-currencies.js
-เพิ่มเฉพาะผู้ใช้: npx sequelize-cli db:seed --seed 20250128-users.js
+## การเพิ่มข้อมูลทดสอบใหม่
+```bash
+# เพิ่มทั้งหมด
+npx sequelize-cli db:seed:all
+
+# เพิ่มเฉพาะสกุลเงิน
+npx sequelize-cli db:seed --seed 20250128-currencies.js
+
+# เพิ่มเฉพาะผู้ใช้
+npx sequelize-cli db:seed --seed 20250128-users.js
 ```
 
-หมายเหตุ:
-เซิร์ฟเวอร์จะทำงานที่ [http://localhost:3000](http://localhost:3000)
+## หมายเหตุ
+เซิร์ฟเวอร์จะทำงานที่ http://localhost:3000
 ```
