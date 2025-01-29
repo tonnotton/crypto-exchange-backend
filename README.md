@@ -1,8 +1,8 @@
 
 ER Diagram
-```markdown
-![image](https://github.com/user-attachments/assets/79855433-e66a-4f6b-b80c-3f10e3efd358)
 
+
+![image](https://github.com/user-attachments/assets/79855433-e66a-4f6b-b80c-3f10e3efd358)
 
 ```markdown
 # Crypto Exchange Backend
