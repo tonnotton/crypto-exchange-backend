@@ -18,7 +18,7 @@ ER Diagram
 
 ดาวน์โหลดโค้ดจาก GitHub โดยใช้คำสั่ง
 ```
-git clone https://github.com/tonnotton/crypto-exchange-backend.git
+git clone https://github.com/worapholak/crypto-exchange-backend.git
 cd crypto-exchange-backend
 ```
 
