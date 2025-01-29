@@ -3,7 +3,7 @@ ER Diagram
 
 
 ![image](https://github.com/user-attachments/assets/79855433-e66a-4f6b-b80c-3f10e3efd358)
-I notice there are some formatting issues with the code blocks and sections in the README. Let me help reorganize it with proper markdown formatting:
+
 
 ```markdown
 # Crypto Exchange Backend
